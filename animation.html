@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Full Screen Background with Text</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 120%;
+      height: 120%;
+      background: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e") no-repeat center center/cover;
+      animation: moveBg 20s linear infinite alternate;
+      z-index: -1;
+    }
+
+    @keyframes moveBg {
+      0%   { transform: scale(1.1) translate(0, 0); }
+      50%  { transform: scale(1.2) translate(-30px, -20px); }
+      100% { transform: scale(1.1) translate(30px, 20px); }
+    }
+
+    .text-box {
+      position: absolute;
+      bottom: 15%;
+      width: 100%;
+      text-align: center;
+      color: purple;
+      font-size: 4rem;
+      font-weight: bold;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+    }
+
+    .text {
+      opacity: 0;
+      position: absolute;
+      width: 100%;
+      left: 0;
+    }
+
+    @keyframes slideUp {
+      0%   { opacity: 0; transform: translateY(50px); }
+      20%  { opacity: 1; transform: translateY(0); }
+      40%  { opacity: 1; transform: translateY(0); }
+      60%  { opacity: 0; transform: translateY(-50px); }
+      100% { opacity: 0; }
+    }
+
+    .text:nth-child(1) { animation: slideUp 9s ease-in-out infinite; animation-delay: 0s; }
+    .text:nth-child(2) { animation: slideUp 9s ease-in-out infinite; animation-delay: 3s; }
+    .text:nth-child(3) { animation: slideUp 9s ease-in-out infinite; animation-delay: 6s; }
+
+  </style>
+</head>
+<body>
+<div class="container">
+
+
+
+
+  <div class="text-box">
+    <div class="text">Welcome to My Website</div>
+    <div class="text">We Build Creative Designs</div>
+    <div class="text">Let’s Get Started!</div>
+  </div>
+</div>
+
+</body>
+</html>
